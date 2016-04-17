@@ -1,0 +1,12 @@
+{
+  "authentication": {
+    "username": "",
+    "password": ""
+  },
+  "urls": [
+    {
+      "url": "",
+      "schema": ""
+    }
+  ]
+}
