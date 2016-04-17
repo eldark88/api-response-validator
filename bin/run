@@ -3,6 +3,17 @@
 require_relative '../lib/api/response/validator.rb'
 
 config_file = ARGV[0]
+
+if config_file.nil? || config_file.empty?
+  puts "Config file is missing"
+  exit(-1)
+end
+
+if File.exist?(config_file) == false
+  puts "Config file doesn't exist"
+  exit(-1)
+end
+
 config_file = File.read(ARGV[0])
 config_data = JSON.parse(config_file)
 
