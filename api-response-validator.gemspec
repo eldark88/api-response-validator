@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.executables   = ["setup", "console", "api-response-validator"]
+  spec.executables   = ["api-response-validator"]
   spec.bindir        = ["bin"]
   spec.require_paths = ["lib"]
 
