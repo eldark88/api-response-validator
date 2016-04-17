@@ -23,14 +23,20 @@ module Api
     				url = url_data['url']
     				schema = url_data['schema']
     				result = 'OK'
-    				data = fetch_json(url)
 
-    				begin
-    				  JSON::Validator.validate!(schema, data)
-    				rescue JSON::Schema::ValidationError => e
-    				  result = e.message
-    					has_failure = true
-    				end
+            begin
+    				      data = RestClient::Request.execute method: :get, url: url, user: @username, password: @password
+
+                  begin
+          				      JSON::Validator.validate!(schema, data)
+          				rescue JSON::Schema::ValidationError => e
+          				      result = e.message
+          					    has_failure = true
+          				end
+            rescue => e
+    				      result = e.message
+    					    has_failure = true
+            end
 
     				rows << [url_data['url'], result]
     			end
@@ -42,10 +48,6 @@ module Api
     			if has_failure
     				exit(-1)
     			end
-    		end
-
-    		private def fetch_json(url)
-    			return RestClient::Request.execute method: :get, url: url, user: @username, password: @password
     		end
 
     	end
