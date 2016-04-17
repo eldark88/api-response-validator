@@ -23,11 +23,12 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.executables   = ["setup", "console", "api-response-validator"]
+  spec.bindir        = ["bin"]
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "json-schema", "~> 2.6.0"
-  spec.add_development_dependency "terminal-table", "~> 1.5.2"
-  spec.add_development_dependency "rest-client", "~> 1.8.0"
+  spec.add_dependency "bundler", "~> 1.11"
+  spec.add_dependency "rake", "~> 10.0"
+  spec.add_dependency "json-schema", "~> 2.6.0"
+  spec.add_dependency "terminal-table", "~> 1.5.2"
+  spec.add_dependency "rest-client", "~> 1.8.0"
 end
